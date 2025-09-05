@@ -1,0 +1,23 @@
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Env and secrets
+.env
+*.env
+
+# Config/data (local only!)
+config.json
+data.json
+data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+env/
+
+# Cargo
+/target
