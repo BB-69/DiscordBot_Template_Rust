@@ -6,10 +6,8 @@
 .env
 *.env
 
-# Config/data (local only!)
-config.json
+# Data (local only!)
 data.json
-data/
 
 # OS files
 .DS_Store

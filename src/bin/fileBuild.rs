@@ -2,7 +2,7 @@ use std::fs;
 use std::path::Path;
 
 fn main() {
-    let path = "data.json";
+    let path = "src/data/data.json";
     let path_obj = Path::new(path);
 
     if path_obj.exists() {
