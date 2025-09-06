@@ -27,12 +27,12 @@ impl TypeMapKey for BotDataKey {
 // Persistence helpers
 pub fn save_all_data(all_data: &AllGuildData) {
     let json = serde_json::to_string_pretty(&all_data).unwrap();
-    std::fs::create_dir_all("data").unwrap();
-    std::fs::write("data/data.json", json).unwrap();
+    std::fs::create_dir_all("src/data").unwrap();
+    std::fs::write("src/data/data.json", json).unwrap();
 }
 
 pub fn load_all_data() -> AllGuildData {
-    std::fs::read_to_string("data/data.json")
+    std::fs::read_to_string("src/data/data.json")
         .ok()
         .and_then(|s| serde_json::from_str(&s).ok())
         .unwrap_or_default()
@@ -62,7 +62,7 @@ fn load_or_create_guild_data(guild_id: u64) -> GuildData {
     all_data.0.insert(guild_id, default_data.clone());
     save_all_data(&all_data);
 
-    crate::utils::log_info(&format!("♻️ Created missing guild data for '{}'", guild_id));
+    crate::utils::log_info(&format!("📥 Created missing guild data for '{}'", guild_id));
 
     default_data
 }
