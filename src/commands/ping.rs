@@ -7,7 +7,7 @@ use crate::utils::check_admin;
 
 pub fn register() -> CreateCommand {
     CreateCommand::new("ping")
-        .description("Replies with Pong! (Admins only ✨)")
+        .description("Replies with Pong! (Admins only test)")
 }
 
 pub async fn execute(ctx: Context, command: CommandInteraction, _bot_data: &BotData) {

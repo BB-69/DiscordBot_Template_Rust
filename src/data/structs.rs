@@ -8,9 +8,7 @@ pub struct GuildSettings {
 
 #[derive(Serialize, Deserialize, Clone, Debug, Default)]
 pub struct IDs {
-    pub log_channel_id: Option<u64>,
-    pub counting_channel_id: Option<u64>,
-    pub log_msg_ids: Vec<u64>,
+    pub channel_id: Option<u64>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, Default)]
