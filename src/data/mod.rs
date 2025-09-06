@@ -44,7 +44,25 @@ pub fn save_guild_data(guild_id: u64, data: &GuildData) {
     save_all_data(&all_data);
 }
 
-pub fn load_guild_data(guild_id: u64) -> Option<GuildData> {
-    let all_data = load_all_data();
-    all_data.0.get(&guild_id).cloned()
+pub fn load_guild_data(guild_id: u64) -> GuildData {
+    // Not 'missing data' proof
+    // load_all_data().0.get(&guild_id).cloned()
+
+    load_or_create_guild_data(guild_id)
+}
+
+fn load_or_create_guild_data(guild_id: u64) -> GuildData {
+    let mut all_data = load_all_data();
+
+    if let Some(data) = all_data.0.get(&guild_id) {
+        return data.clone();
+    }
+
+    let default_data = GuildData::default();
+    all_data.0.insert(guild_id, default_data.clone());
+    save_all_data(&all_data);
+
+    crate::utils::log_info(&format!("♻️ Created missing guild data for '{}'", guild_id));
+
+    default_data
 }
